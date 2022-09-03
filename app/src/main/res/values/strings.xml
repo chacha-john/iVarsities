@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">iVarsities</string>
+
+    <!--    Search activity -->
+    <string name="country">Enter a country</string>
+    <string name="search_button">Search</string>
+
+<!--    Response Activity -->
+    <string name="error_text">Something went wrong</string>
+
+<!--    University Item -->
+    <string name="university_name">Name of the university</string>
+    <string name="web_page">Website url</string>
 </resources>
