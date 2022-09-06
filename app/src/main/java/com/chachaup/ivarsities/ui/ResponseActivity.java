@@ -14,6 +14,7 @@ import com.chachaup.ivarsities.network.HipolabsAPI;
 import com.chachaup.ivarsities.network.HipolabsClient;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +27,7 @@ public class ResponseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_response);
+        ButterKnife.bind(this);
 
         String query = getIntent().getStringExtra("query");
 
@@ -34,15 +36,14 @@ public class ResponseActivity extends AppCompatActivity {
         call.enqueue(new Callback<UniversitiesListResponse>() {
             @Override
             public void onResponse(Call<UniversitiesListResponse> call, Response<UniversitiesListResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                if (response.body() != null) {
+                    Toast.makeText(ResponseActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<UniversitiesListResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-//                mError.setVisibility(View.VISIBLE);
+                mError.setVisibility(View.VISIBLE);
             }
         });
     }
